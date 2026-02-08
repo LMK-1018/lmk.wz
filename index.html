@@ -12,22 +12,25 @@
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     <!-- 环境变量配置 -->
     <script>
-        // 本地开发环境配置
-        const isLocal = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
+        // ⚠️ 重要：敏感信息已移除！
+        // 请通过以下方式配置：
+        // 1. Netlify: Site settings → Environment variables 中添加
+        // 2. 设置以下环境变量：
+        //    - SUPABASE_URL
+        //    - SUPABASE_ANON_KEY
+        //    - ADMIN_EMAIL（可选）
         
-        // 全局环境变量对象
+        // 从环境变量读取配置
         window.env = {
-            SUPABASE_URL: isLocal ? 'https://iyuqwappixlzveulkmhp.supabase.co' : 'https://iyuqwappixlzveulkmhp.supabase.co',
-            SUPABASE_ANON_KEY: isLocal ? 'sb_publishable_VG_J4mJSXv3SJwQX6LiXGg_mLaK9TOr' : 'sb_publishable_VG_J4mJSXv3SJwQX6LiXGg_mLaK9TOr'
+            SUPABASE_URL: window.netlifyEnv?.SUPABASE_URL || '',
+            SUPABASE_ANON_KEY: window.netlifyEnv?.SUPABASE_ANON_KEY || '',
+            ADMIN_EMAIL: window.netlifyEnv?.ADMIN_EMAIL || ''
         };
         
-        // Netlify 环境变量覆盖（部署时会自动替换）
-        if (typeof netlifyEnv !== 'undefined') {
-            window.env = {
-                ...window.env,
-                ...netlifyEnv
-            };
-        }
+        // 如果是本地开发，可以临时在这里配置（不要上传到GitHub）
+        // window.env.SUPABASE_URL = 'your-url';
+        // window.env.SUPABASE_ANON_KEY = 'your-key';
+        // window.env.ADMIN_EMAIL = 'your-email@qq.com';
     </script>
 </head>
 <body>
