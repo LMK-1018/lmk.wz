@@ -1,16 +1,11 @@
-// OTP验证码验证版本 - 安全版本
-// ⚠️ 注意：敏感信息已移除，请通过环境变量配置
+// OTP验证码验证版本
 (function() {
-    // 从环境变量读取配置（Netlify 会自动注入）
-    // 如果没有设置环境变量，会从 window.env 读取
-    const supabaseUrl = window.env?.SUPABASE_URL || '';
-    const supabaseAnonKey = window.env?.SUPABASE_ANON_KEY || '';
-    const ADMIN_EMAIL = window.env?.ADMIN_EMAIL || '';
-
-    // 验证配置是否存在
-    if (!supabaseUrl || !supabaseAnonKey) {
-        console.warn('⚠️ Supabase 配置缺失！请在 Netlify 中设置环境变量');
-    }
+    // Supabase配置
+    const supabaseUrl = window.env?.SUPABASE_URL || 'https://iyuqwappixlzveulkmhp.supabase.co';
+    const supabaseAnonKey = window.env?.SUPABASE_ANON_KEY || 'sb_publishable_VG_J4mJSXv3SJwQX6LiXGg_mLaK9TOr';
+    
+    // 管理员邮箱常量
+    const ADMIN_EMAIL = '2706273423@qq.com';
 
     // 初始化Supabase客户端
     let supabaseClient = null;
