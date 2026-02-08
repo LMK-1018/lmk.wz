@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>流体背景测试</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+        }
+    </style>
+</head>
+<body>
+    <div id="box" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; background: #f0f0f0;"></div>
+    
+    <div style="text-align: center; margin-top: 100px;">
+        <h1>流体背景测试</h1>
+        <p>如果背景显示彩色流动效果，则测试成功</p>
+    </div>
+
+    <script src="美学流体Bg.min.js"></script>
+    <script>
+        window.onload = function() {
+            try {
+                console.log('Initializing fluid background...');
+                
+                let colorbg = new Color4Bg.美学流体Bg({
+                    dom: "box",
+                    colors: ["#085D97","#67D19F","#F8F5F0","#00EAEB","#1FB6D6","#107BAC"],
+                    loop: true
+                });
+                
+                console.log('Fluid background initialized successfully');
+            } catch (error) {
+                console.error('Error:', error);
+                document.body.innerHTML += '<div style="color: red; text-align: center;">Error: ' + error.message + '</div>';
+            }
+        };
+    </script>
+</body>
+</html>

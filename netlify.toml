@@ -1,0 +1,27 @@
+[build]
+  publish = "."
+  command = ""
+
+[dev]
+  command = ""
+  port = 3000
+  targetPort = 3000
+  autoLaunch = false
+
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
+
+# SPA fallback for client-side routing
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
+  conditions = {Role = []}
+
+# Cache control for static assets
+[[headers]]
+  for = "/*"
+  [headers.values]
+    Cache-Control = "public, max-age=3600"
